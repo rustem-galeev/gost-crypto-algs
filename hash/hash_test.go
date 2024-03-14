@@ -2,6 +2,7 @@ package hash
 
 import (
 	"bytes"
+	"fmt"
 	"testing"
 )
 
@@ -15,7 +16,7 @@ func TestHash_512FirstExample_ok(t *testing.T) {
 		0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
 		0x30, 0x31, 0x32,
 	}
-	expectedHash := []byte{
+	expectedResult := []byte{
 		0x1b, 0x54, 0xd0, 0x1a, 0x4a, 0xf5, 0xb9, 0xd5,
 		0xcc, 0x3d, 0x86, 0xd6, 0x8d, 0x28, 0x54, 0x62,
 		0xb1, 0x9a, 0xbc, 0x24, 0x75, 0x22, 0x2f, 0x35,
@@ -30,8 +31,10 @@ func TestHash_512FirstExample_ok(t *testing.T) {
 	hasher.Write(message)
 	hash := hasher.Sum(nil)
 
-	if !bytes.Equal(hash, expectedHash) {
-		t.Errorf("Hash isn't equal to expected")
+	if !bytes.Equal(hash, expectedResult) {
+		t.Errorf("Hash isn't equal to expected" +
+			fmt.Sprintf(".\nActual: %v", hash) +
+			fmt.Sprintf(".\nExpected: %v", expectedResult))
 	}
 }
 
@@ -45,7 +48,7 @@ func TestHash_256FirstExample_ok(t *testing.T) {
 		0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
 		0x30, 0x31, 0x32,
 	}
-	expectedHash := []byte{
+	expectedResult := []byte{
 		0x9d, 0x15, 0x1e, 0xef, 0xd8, 0x59, 0x0b, 0x89,
 		0xda, 0xa6, 0xba, 0x6c, 0xb7, 0x4a, 0xf9, 0x27,
 		0x5d, 0xd0, 0x51, 0x02, 0x6b, 0xb1, 0x49, 0xa4,
@@ -56,8 +59,10 @@ func TestHash_256FirstExample_ok(t *testing.T) {
 	hasher.Write(message)
 	hash := hasher.Sum(nil)
 
-	if !bytes.Equal(hash, expectedHash) {
-		t.Errorf("Hash isn't equal to expected")
+	if !bytes.Equal(hash, expectedResult) {
+		t.Errorf("Hash isn't equal to expected" +
+			fmt.Sprintf(".\nActual: %v", hash) +
+			fmt.Sprintf(".\nExpected: %v", expectedResult))
 	}
 }
 
@@ -73,7 +78,7 @@ func TestHash_512SecondExample_ok(t *testing.T) {
 		0xfb, 0xff, 0x20, 0xef, 0xeb, 0xfa, 0xea, 0xfb,
 		0x20, 0xc8, 0xe3, 0xee, 0xf0, 0xe5, 0xe2, 0xfb,
 	}
-	expectedHash := []byte{
+	expectedResult := []byte{
 		0x1e, 0x88, 0xe6, 0x22, 0x26, 0xbf, 0xca, 0x6f,
 		0x99, 0x94, 0xf1, 0xf2, 0xd5, 0x15, 0x69, 0xe0,
 		0xda, 0xf8, 0x47, 0x5a, 0x3b, 0x0f, 0xe6, 0x1a,
@@ -88,8 +93,10 @@ func TestHash_512SecondExample_ok(t *testing.T) {
 	hasher.Write(message)
 	hash := hasher.Sum(nil)
 
-	if !bytes.Equal(hash, expectedHash) {
-		t.Errorf("Hash isn't equal to expected")
+	if !bytes.Equal(hash, expectedResult) {
+		t.Errorf("Hash isn't equal to expected" +
+			fmt.Sprintf(".\nActual: %v", hash) +
+			fmt.Sprintf(".\nExpected: %v", expectedResult))
 	}
 }
 
@@ -105,7 +112,7 @@ func TestHash_256SecondExample_ok(t *testing.T) {
 		0xfb, 0xff, 0x20, 0xef, 0xeb, 0xfa, 0xea, 0xfb,
 		0x20, 0xc8, 0xe3, 0xee, 0xf0, 0xe5, 0xe2, 0xfb,
 	}
-	expectedHash := []byte{
+	expectedResult := []byte{
 		0x9d, 0xd2, 0xfe, 0x4e, 0x90, 0x40, 0x9e, 0x5d,
 		0xa8, 0x7f, 0x53, 0x97, 0x6d, 0x74, 0x05, 0xb0,
 		0xc0, 0xca, 0xc6, 0x28, 0xfc, 0x66, 0x9a, 0x74,
@@ -116,7 +123,9 @@ func TestHash_256SecondExample_ok(t *testing.T) {
 	hasher.Write(message)
 	hash := hasher.Sum(nil)
 
-	if !bytes.Equal(hash, expectedHash) {
-		t.Errorf("Hash isn't equal to expected")
+	if !bytes.Equal(hash, expectedResult) {
+		t.Errorf("Hash isn't equal to expected" +
+			fmt.Sprintf(".\nActual: %v", hash) +
+			fmt.Sprintf(".\nExpected: %v", expectedResult))
 	}
 }
